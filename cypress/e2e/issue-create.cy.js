@@ -10,7 +10,7 @@ describe('Issue create', () => {
     })
   })
 
-  it('1. Should create an issue and validate it successfully', () => {
+  it('Should create an issue and validate it successfully', () => {
     //System finds modal for creating issue and does next steps inside of it
     cy.get('[data-testid="modal:issue-create"]').within(() => {
 
@@ -60,7 +60,7 @@ describe('Issue create', () => {
     })
   })
 
-  it('2. Should validate title is required field if missing', () => {
+  it('Should validate title is required field if missing', () => {
     //System finds modal for creating issue and does next steps inside of it
     cy.get('[data-testid="modal:issue-create"]').within(() => {
 
@@ -72,7 +72,7 @@ describe('Issue create', () => {
     })
   })
 
-  it('3. Should create another issue with type Bug and validate it successfully', () => {
+  it('Should create another issue with type bug and validate it successfully', () => {
     //System finds modal for creating issue and does next steps inside of it
     cy.get('[data-testid="modal:issue-create"]').within(() => {
 
@@ -123,7 +123,7 @@ describe('Issue create', () => {
     })
   })
 
-  it('4. Should create new issue usingn the random data plugin', () => {
+  it('Should create new issue using the random data plugin', () => {
     const sentence = faker.lorem.sentence(5)
     const randomWord = faker.lorem.word()
 

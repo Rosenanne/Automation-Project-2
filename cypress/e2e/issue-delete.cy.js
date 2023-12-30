@@ -7,7 +7,7 @@ describe('Issue delete', () => {
             getIssueDetailsModal().should('be.visible')
         })
     })
-    it('1. Should delete the issue successfully', () => {
+    it('Should delete the issue successfully', () => {
         getIssueDetailsModal().within(() => {
             cy.get('[data-testid="icon:trash"]').click()
         })
@@ -31,7 +31,7 @@ describe('Issue delete', () => {
         })
     })
 
-    it('2. Issue deletion cancellation', () => {
+    it('Issue deletion cancellation', () => {
         getIssueDetailsModal().within(() => {
             cy.get('[data-testid="icon:trash"]').click()
         })
@@ -39,8 +39,10 @@ describe('Issue delete', () => {
         cy.get('[data-testid="modal:confirm"]').should('contain', deletionConfirmation)
         cy.get('.ewzfNn').contains('Cancel').click()
 
-        //Assert that the deletion confirmation dialogue is not visible
+        //Assert that the deletion confirmation dialogue is not visible and close the issue details modal
         cy.contains(deletionConfirmation).should('not.exist')
+        cy.get('[data-testid="icon:close"]').first().click()
+        cy.get('[data-testid="modal:issue-details"]').should('not.exist')
 
 
         //Assert that only one list with name Backlog is visible and do steps inside of it
