@@ -92,7 +92,7 @@ describe('Issue comments creating, editing and deleting', () => {
 
             cy.get('textarea[placeholder="Add a comment..."]').type(comment);
 
-            clickButtonSave()
+            clickButtonSave();
 
             cy.contains(comment).should('be.visible');
             cy.contains('div', 'Edit').should('be.visible');
@@ -111,7 +111,7 @@ describe('Issue comments creating, editing and deleting', () => {
                 .clear()
                 .type(editedComment);
 
-            clickButtonSave()
+            clickButtonSave();
 
             getIssueComment()
                 .should('contain', 'Edit')
@@ -142,9 +142,9 @@ describe('Issue comments creating, editing and deleting', () => {
         getIssueDetailsModal()
             .get('[data-testid="icon:close"]')
             .first()
-            .click()
+            .click();
 
-        getIssueDetailsModal().should('not.exist')
+        getIssueDetailsModal().should('not.exist');
     })
 
 });
