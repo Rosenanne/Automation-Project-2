@@ -1,4 +1,4 @@
-describe('Issue time estimation add, update and remove', () => {
+describe('Issue time tracking functionality', () => {
     beforeEach(() => {
         cy.visit('/');
         cy.url().should('eq', `${Cypress.env('baseUrl')}project/board`).then((url) => {
@@ -44,7 +44,7 @@ describe('Issue time estimation add, update and remove', () => {
         getPlaceholderNumber().should('be.visible');
     });
 
-    it.only('Should log time and remove logged time successfully', () => {
+    it('Should log time and remove logged time successfully', () => {
 
         //Add logged time and assure that it is visible
         getIconStopwatch().should('be.visible').click();
