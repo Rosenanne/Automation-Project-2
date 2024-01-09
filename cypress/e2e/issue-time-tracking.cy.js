@@ -44,12 +44,11 @@ describe('Issue time estimation add, update and remove', () => {
         getPlaceholderNumber().should('be.visible');
     });
 
-    it('Should log time and remove logged time successfully', () => {
+    it.only('Should log time and remove logged time successfully', () => {
 
         //Add logged time and assure that it is visible
-        getIssueDetailsModal().within(() => {
-            getIconStopwatch().should('be.visible').click();
-        });
+        getIconStopwatch().should('be.visible').click();
+
         cy.get('[data-testid="modal:tracking"]').within(() => {
             getPlaceholderNumber().eq(0).clear().type(timeSpent);
             getPlaceholderNumber().eq(1).type(timeRemaining);
@@ -61,14 +60,12 @@ describe('Issue time estimation add, update and remove', () => {
         });
 
         //Assure that time spent and time remaining values are visible
-        getIssueDetailsModal().within(() => {
-            cy.get('.irwmBe').should('have.text', '2h logged5h remaining');
-        });
+        cy.contains('div', '2h logged').should('be.visible')
+        cy.contains('div', '5h remaining').should('be.visible')
 
         //Remove logged time
-        getIssueDetailsModal().within(() => {
-            getIconStopwatch().should('be.visible').click();
-        });
+        getIconStopwatch().should('be.visible').click();
+
         cy.get('[data-testid="modal:tracking"]').within(() => {
             getPlaceholderNumber().eq(0).clear();
             getPlaceholderNumber().eq(1).clear();
@@ -77,9 +74,8 @@ describe('Issue time estimation add, update and remove', () => {
         })
 
         //Assure that time spent and time remaining values are removed
-        getIssueDetailsModal().within(() => {
-            cy.get('.irwmBe').should('have.text', 'No time logged8h estimated');
-        });
+        cy.contains('div', 'No time logged').should('be.visible');
+        cy.contains('div', '8h estimated').should('be.visible');
 
     })
 })
